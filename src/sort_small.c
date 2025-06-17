@@ -33,10 +33,10 @@ void	sort_3(t_stack *a)
 	y = a->top->next->value;
 	z = a->top->next->next->value;
 	if (x < y && y > z && z > x)
-		{
-			sa(a);
-			ra(a);
-		}
+	{
+		sa(a);
+		ra(a);
+	}
 	if (x > y && y < z && z > x)
 		sa(a);
 	if (x < y && y > z && z < x)

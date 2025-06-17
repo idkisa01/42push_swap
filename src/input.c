@@ -80,7 +80,7 @@ int	fill_stack_from_args(t_stack *a, int argc, char *argv[])
 
 	i = 1;
 	if (ft_strchr(argv[i], '"'))
-			ft_split(argv[i], ' ');
+		ft_split(argv[i], ' ');
 	while (i < argc)
 	{
 		if (!is_valid_number(argv[i]))
