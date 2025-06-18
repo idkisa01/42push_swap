@@ -73,6 +73,17 @@ int	exists_in_stack(t_stack *stack, int value)
 	return (0);
 }
 
+int	is_valid_input(t_stack *a, char *str, int *value)
+{
+	if (!is_valid_number(str))
+		return (0);
+	if (!safe_atoi(str, value))
+		return (0);
+	if (exists_in_stack(a, *value))
+		return (0);
+	return (1);
+}
+
 int	fill_stack_from_args(t_stack *a, int argc, char **argv)
 {
 	int		i;
@@ -83,16 +94,21 @@ int	fill_stack_from_args(t_stack *a, int argc, char **argv)
 	newargv = argv;
 	if (argc == 2)
 		newargv = ft_split(argv[i], ' ');
-	while (newargv[i])
+	while (newargv[i] && argc == 2)
 	{
-		if (!is_valid_number(newargv[i]))
-			return (0);
-		if (!safe_atoi(newargv[i], &value))
-			return (0);
-		if (exists_in_stack(a, value))
-			return (0);
+		if (is_valid_input(a, newargv[i], &value) == 0)
+			return (free_split(newargv), free_stack(a), 0);
 		append_node(a, create_node(value));
 		i++;
 	}
+	while (newargv[i] && argc > 2)
+	{
+		if (is_valid_input(a, newargv[i], &value) == 0)
+			return (free_stack(a), 0);
+		append_node(a, create_node(value));
+		i++;
+	}
+	if (argc == 2)
+		free_split(newargv);
 	return (1);
 }

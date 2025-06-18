@@ -19,7 +19,7 @@ OBJ_DIR = obj
 LIB_DIR = libft
 LIBFT   = $(LIB_DIR)/libft.a
 
-SRC = push_swap.c input.c indexer.c utils.c radix_sort.c operations.c sort_small.c sort_small_2.c
+SRC = push_swap.c input.c indexer.c utils.c radix_sort.c operations.c sort_small.c sort_small_2.c frees.c
 SRC_PATHS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 

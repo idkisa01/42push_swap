@@ -54,6 +54,8 @@ int	radix_sort(t_stack *a, t_stack *b)
 	int		bit;
 	int		max;
 
+	if (is_sorted(a) == 1)
+		return (0);
 	bit = 0;
 	max = max_index(a);
 	while ((max >> bit) != 0)

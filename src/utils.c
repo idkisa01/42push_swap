@@ -51,19 +51,16 @@ void	append_node(t_stack *stack, t_node *new)
 	stack->size++;
 }
 
-void	free_stack(t_stack *stack)
+int	is_sorted(t_stack *a)
 {
-	t_node	*tmp;
-	t_node	*current;
+	t_node	*node;
 
-	current = stack->top;
-	while (current != NULL)
+	node = a->top;
+	while (node)
 	{
-		tmp = current->next;
-		free(current);
-		current = tmp;
+		if (node->next != NULL && node->value > node->next->value)
+			return (0);
+		node = node->next;
 	}
-	stack->top = NULL;
-	stack->size = 0;
+	return (1);
 }
-	

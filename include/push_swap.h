@@ -36,6 +36,8 @@ t_node	*create_node(int value);
 void	append_node(t_stack *stack, t_node *new);
 void	init_stacks(t_stack *a, t_stack *b);
 void	free_stack(t_stack *stack);
+int		is_sorted(t_stack *a);
+void	free_split(char **array);
 
 int		safe_atoi(const char *str, int *out);
 int		exists_in_stack(t_stack *stack, int value);

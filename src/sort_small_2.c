@@ -38,6 +38,8 @@ int	find_min_pos(t_stack *a)
 
 void	sort_small(t_stack *a, t_stack *b)
 {
+	if (is_sorted(a) == 1)
+		return ;
 	if (a->size == 2)
 		sort_2(a);
 	if (a->size == 3)
