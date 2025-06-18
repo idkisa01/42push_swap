@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 	init_stacks(&a, &b);
 	if (argc < 2)
 		return (0);
-	if (!fill_stack_from_args(&a, argc, argv))
+	if (!fill_stack_from_args(&a, argc, argv + 1))
 	{
 		write(2, "Error\n", 6);
 		return (1);

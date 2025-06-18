@@ -73,19 +73,21 @@ int	exists_in_stack(t_stack *stack, int value)
 	return (0);
 }
 
-int	fill_stack_from_args(t_stack *a, int argc, char *argv[])
+int	fill_stack_from_args(t_stack *a, int argc, char **argv)
 {
-	int	i;
-	int	value;
+	int		i;
+	int		value;
+	char	**newargv;
 
-	i = 1;
-	if (ft_strchr(argv[i], '"'))
-		ft_split(argv[i], ' ');
-	while (i < argc)
+	i = 0;
+	newargv = argv;
+	if (argc == 2)
+		newargv = ft_split(argv[i], ' ');
+	while (newargv[i])
 	{
-		if (!is_valid_number(argv[i]))
+		if (!is_valid_number(newargv[i]))
 			return (0);
-		if (!safe_atoi(argv[i], &value))
+		if (!safe_atoi(newargv[i], &value))
 			return (0);
 		if (exists_in_stack(a, value))
 			return (0);
